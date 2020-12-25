@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useToasts } from 'react-toast-notifications';
 import './login.styles.scss'
-import {auth} from '../firebase/index'
+import {auth, firestore} from '../firebase/index'
 export default function SignUp() {
     const [email, setEmail] = useState("");
     const [name, setName] = useState("");
@@ -23,7 +23,12 @@ export default function SignUp() {
       }
       setLoading(true);
       auth.createUserWithEmailAndPassword(email,password).then(res=>{
-        setLoading(false);
+            firestore.collection('users').doc(res.user.uid).set({name,email,token:""}).then(res=>{
+                setLoading(false);
+            }).catch(err=>{
+                setError(err.message)
+                setLoading(false);
+            });
       }).catch(err=>{
         setError(err.message)
         setLoading(false);
