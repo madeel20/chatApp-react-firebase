@@ -4,14 +4,20 @@ $container-top-border: darken($primary-color, 27.84);
 
 #new-message-container {
   display: grid;
-  grid: 40px / 40px;
+  grid: 40px / 1fr 40px;
   align-content: center;
+  align-items: center;
   grid-area: new-message-container;
   background: $primary-color;
-  border-top: 1px solid $container-top-border;
+  // border-top: 1px solid $container-top-border;
   border-radius: 0 0 0 10px;
   padding: 0 15px;
-
+    div{
+      & h2{
+        color: white;
+        text-transform: capitalize;
+          }
+      }
   button {
     display: flex;
     align-items: center;

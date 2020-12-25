@@ -1,6 +1,7 @@
 import React from 'react';
 
 import './ConversationSearch.scss';
+import NewConversation from '../new-conversation/NewConversation'
 
 const ConversationSearch = ({ conversations }) => {
     let searchInput = null;
@@ -11,8 +12,17 @@ const ConversationSearch = ({ conversations }) => {
 
     return (
         <div id="search-container">
-            { searchInput }
+        <div >
+           <h1>Chat App</h1>
         </div>
+        {/* <div>
+            <NewConversation/> */}
+            {/* <img src={require("../../../images/add-user-male.png")}/> */}
+        {/* </div> */}
+        </div>
+        // <div id="search-container">
+        //     { searchInput }
+        // </div>
     );
 }
 
