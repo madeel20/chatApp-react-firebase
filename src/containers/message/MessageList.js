@@ -34,7 +34,7 @@ const MessageList = ({ conversationId, getMessagesForConversation, loadMessages 
 
 const mapStateToProps = state => {
     const getMessagesForConversation = conversationId => {
-        return state.messagesState.messageDetails[conversationId];
+        return state.Messages.messageDetails[conversationId];
     }
 
     return {
