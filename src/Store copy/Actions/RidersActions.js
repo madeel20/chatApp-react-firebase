@@ -5,7 +5,6 @@ import Vendors from "../Constants/Vendors";
 export const getRiders = (CB) => async (dispatch) => {
     dispatch({type:Riders.GET_ALL_RIDERS,payload:{ loading:true }})
     getCollection('riders').then(res=>{
-        console.log('action',res)
         dispatch({type:Riders.GET_ALL_RIDERS,payload:{loading:false, data:convertToArray(res) }});
         CB && CB();
     })

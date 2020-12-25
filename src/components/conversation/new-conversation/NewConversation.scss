@@ -4,7 +4,7 @@ $container-top-border: darken($primary-color, 27.84);
 
 #new-message-container {
   display: grid;
-  grid: 40px / 1fr 40px;
+  grid: 35px / 1fr 40px;
   align-content: center;
   align-items: center;
   grid-area: new-message-container;

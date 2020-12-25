@@ -31,7 +31,6 @@ export default function LoginPage() {
     firebase.auth().signInWithEmailAndPassword(email,password).then(res=>{
       setLoading(false);
     }).catch(err=>{
-      console.log(err)
       setLoading(false);
       setError(err.message);
     })

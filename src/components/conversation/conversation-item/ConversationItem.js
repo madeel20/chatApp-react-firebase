@@ -9,12 +9,12 @@ const ConversationItem = ({ conversation, isActive, onConversationItemSelected }
     });
 
     return (
-        <div className={className} onClick={() => onConversationItemSelected(conversation.id)}>
-            <img src={conversation.imageUrl} alt={conversation.imageAlt} />
-            <div className="title-text">{conversation.title}</div>
+        <div key={conversation.id} className={className} onClick={() => onConversationItemSelected(conversation.id)}>
+            <img src={require('../../../images/group-icon.png')} alt={conversation.imageAlt} />
+            <div className="title-text">{conversation.name}</div>
             <div className="created-date">{conversation.createdAt}</div>
             <div className="conversation-message">
-                {conversation.latestMessageText}
+                {conversation.recentMessage}
             </div>
         </div>
     );

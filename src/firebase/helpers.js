@@ -14,7 +14,6 @@ export const checkIfUserExistAsAdmin = async email => {
     .where("email", "==", email)
     .get()
     .then(res => {
-        console.log(res.docs.length)
       if (res.docs.length > 0) {
         return true;
       } else {

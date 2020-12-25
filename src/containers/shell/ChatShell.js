@@ -9,13 +9,18 @@ import MessageList from '../message/MessageList';
 import ChatForm from '../../components/chat-form/ChatForm';
 import './ChatShell.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { conversationChanged ,conversationDeleted} from '../../Store copy/Actions/ConversationActions';
+import { conversationChanged ,conversationDeleted, getAllConversationsOfCurrentUser} from '../../Store copy/Actions/ConversationActions';
+import { getAllUsers } from '../../Store copy/Actions/UsersActions';
 
 const ChatShell = () => {
     const dispatch = useDispatch();
     const stateProps = useSelector(state =>state)
-    const {User,Messages,Conversations} = stateProps;
+    const {User,Messages,Conversations,otherUsers} = stateProps;
     const {conversations,selectedConversation} = Conversations;
+    useEffect(() => {
+        dispatch(getAllUsers());
+        dispatch(getAllConversationsOfCurrentUser());
+    }, [])
     let conversationContent = (
         <>
             <NoConversations></NoConversations>
