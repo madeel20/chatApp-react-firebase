@@ -3,7 +3,7 @@ import {storage} from "../firebase";
 export const convertToArray = data =>{
     let array =[];
     data.map(r=>{
-        array.push(r.data());
+        array.push({...r.data(),id:r.id});
     });
     return array;
 }

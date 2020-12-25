@@ -5,7 +5,7 @@ import Conversations from "../Constants/Conversations";
 export const getAllConversationsOfCurrentUser = (CB) => async (dispatch) => {
     dispatch({type:Conversations.GET_ALL_CONVERSATIONS_OF_CURRENT_USER,payload:{ loading:true }})
      await getCollection('chats').then(res=>{
-        dispatch({type:Conversations.GET_ALL_CONVERSATIONS_OF_CURRENT_USER,payload:{loading:false, conversations:convertToArray(res) }});
+        dispatch({type:Conversations.GET_ALL_CONVERSATIONS_OF_CURRENT_USER,payload:{loading:false, conversations:convertToArray(res),selectedConversation:convertToArray(res)[0]}});
         CB && CB(); })
         .catch((error) => {
             console.log(error);

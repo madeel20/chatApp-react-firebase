@@ -7,7 +7,6 @@ const ConversationItem = ({ conversation, isActive, onConversationItemSelected }
     const className = classNames('conversation', {
         'active': isActive
     });
-
     return (
         <div key={conversation.id} className={className} onClick={() => onConversationItemSelected(conversation.id)}>
             <img src={require('../../../images/group-icon.png')} alt={conversation.imageAlt} />

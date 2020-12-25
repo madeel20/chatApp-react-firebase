@@ -1,3 +1,5 @@
+import Messages from '../Constants/Messages';
+
 const initialState = {
     messageDetails: {
         '2': [
@@ -156,11 +158,15 @@ const initialState = {
                 isMyMessage: true
             }
         ]
-    }
+    },
+    data:[],
+    loading:false,
 }
 
 const messagesReducer = (state = initialState, action) => {
     switch(action.type) {
+        case Messages.LOAD_MESSAGES:
+            return {...state, ...action.payload}
         case 'MESSAGES_LOADED':
             const { conversationId, messages, hasMoreMessages, lastMessageId } = action.payload;
             const currentConversationMapEntry = state.messageDetails[conversationId];

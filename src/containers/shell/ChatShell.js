@@ -20,7 +20,7 @@ const ChatShell = () => {
     useEffect(() => {
         dispatch(getAllUsers());
         dispatch(getAllConversationsOfCurrentUser());
-    }, [])
+    }, []);
     let conversationContent = (
         <>
             <NoConversations></NoConversations>
@@ -39,7 +39,7 @@ const ChatShell = () => {
         <div id="chat-container">
             <ConversationSearch conversations={conversations} />
             <ConversationList
-                onConversationItemSelected={(conversationChanged)}
+                onConversationItemSelected={(id)=>dispatch(conversationChanged(id))}
                 conversations={conversations}
                 selectedConversation={selectedConversation} />
             <NewConversation />

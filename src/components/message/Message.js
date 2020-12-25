@@ -5,8 +5,8 @@ import './Message.scss';
 
 const Message = ({ isMyMessage, message }) => {
     const messageClass = classNames('message-row', {
-        'you-message': isMyMessage,
-        'other-message': !isMyMessage
+        'you-message': !isMyMessage,
+        'other-message': isMyMessage
     });
     
     const imageThumbnail = isMyMessage ? null : <img src={message.imageUrl} alt={message.imageAlt} />;
@@ -16,7 +16,7 @@ const Message = ({ isMyMessage, message }) => {
             <div className="message-content">
                 {imageThumbnail}
                 <div className="message-text">
-                    {message.messageText}
+                    {message.text}
                 </div>
                 <div className="message-time">{message.createdAt}</div>
             </div>
