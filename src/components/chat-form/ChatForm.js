@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { auth } from '../../firebase';
+import { sendMessage } from '../../Store copy/Actions/MessagesActions';
 
 import FormButton from '../controls/buttons/FormButton';
 import AttachmentIcon from '../controls/icons/attachment-icon/AttachmentIcon';
@@ -15,6 +18,7 @@ const adjustTextMessage = (textMessage) => {
 
 const ChatForm = ({ selectedConversation, onMessageSubmitted }) => {
     const [textMessage, setTextMessage] = useState('');
+    const dispatch = useDispatch();
     const disableButton = isMessageEmpty(textMessage);
     let formContents = null;
     let handleFormSubmit = null;
@@ -36,10 +40,10 @@ const ChatForm = ({ selectedConversation, onMessageSubmitted }) => {
     
         handleFormSubmit = (e) => {
             e.preventDefault();
-            
             if (!isMessageEmpty(textMessage)) {
-                onMessageSubmitted(textMessage);
-                setTextMessage('');
+                dispatch(sendMessage(selectedConversation.id,{text:textMessage,senderId:auth.currentUser.uid,timestamp:new Date().toUTCString()},()=>{
+                    setTextMessage('');
+                }))
             }
         };
     }

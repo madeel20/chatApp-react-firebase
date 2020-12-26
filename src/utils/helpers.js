@@ -30,3 +30,10 @@ export const convertDBSnapshoptToArrayOfObject = (snapshot)=>{
     })
     return arr;
 }
+
+export const getFormattedDate=(initialDate) =>{
+    var date = new Date(initialDate);
+    var str = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate() + " " +  date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+
+    return str;
+}

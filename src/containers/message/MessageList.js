@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect, useDispatch, useSelector } from 'react-redux';
 
 import { messagesRequested } from '../../store/actions';
@@ -7,18 +7,24 @@ import Message from '../../components/message/Message';
 import ReactLoading from 'react-loading';
 import { auth, firestore } from '../../firebase';
 import { getMessagesOfCurrentConversation } from '../../Store copy/Actions/MessagesActions';
+import { convertToArray } from '../../utils/helpers';
 
 const MessageList = ({ conversationId, getMessagesForConversation, loadMessages }) => {
     const dispatch = useDispatch();
+    const [loading, setLoading] = useState(false)
     const stateProps = useSelector(({Messages}) => {
         return {...Messages}
     } );
-    const {data,loading}=  stateProps;
+    const {data}=  stateProps;
     const messageDetails = [];
     const messages = messageDetails ? messageDetails.messages: null;
     let messageItems = null;
     useEffect(() => {
-        dispatch(getMessagesOfCurrentConversation(conversationId));
+        setLoading(true)
+        firestore.collection(`chats/${conversationId}/messages`).orderBy('timestamp','desc').onSnapshot(function(res) {
+        dispatch(getMessagesOfCurrentConversation(res));
+        setLoading(false)
+    });
         if (!messageDetails) {
             loadMessages(conversationId, null);
         }

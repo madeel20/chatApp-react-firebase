@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-
+import {getFormattedDate} from '../../utils/helpers'
 import './Message.scss';
 
 const Message = ({ isMyMessage, message }) => {
@@ -18,7 +18,7 @@ const Message = ({ isMyMessage, message }) => {
                 <div className="message-text">
                     {message.text}
                 </div>
-                <div className="message-time">{message.createdAt}</div>
+                <div className="message-time">{getFormattedDate(message.timestamp)}</div>
             </div>
         </div>
     );
