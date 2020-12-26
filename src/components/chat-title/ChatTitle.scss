@@ -17,3 +17,33 @@ $chat-title-shadow: darken($accent-color, 75.29);
     padding: 0 20px;
     z-index: 1;
 }
+.modall {
+    position:absolute;
+    top: 40px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    background-color: white;
+    width:30%;
+    margin:auto;
+    text-align:center;
+    padding:35px 40px;
+    border:0px
+  }
+
+  .overlayy {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(165, 161, 161,0.5);
+    z-index: 9999;
+  }
+  .heading {
+    color: #0048AA;
+    border-bottom: 1px solid #0048AA;
+    padding-bottom: 10px;
+    font-style: italic;
+    text-align: left;
+    margin-bottom: 10px;}
