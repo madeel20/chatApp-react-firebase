@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { auth } from '../../firebase';
-import { sendMessage } from '../../Store copy/Actions/MessagesActions';
+import { sendMessage } from '../../store/Actions/MessagesActions';
 
 import FormButton from '../controls/buttons/FormButton';
 import AttachmentIcon from '../controls/icons/attachment-icon/AttachmentIcon';

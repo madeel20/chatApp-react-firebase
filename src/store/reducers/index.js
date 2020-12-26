@@ -1,9 +1,10 @@
-import { combineReducers } from 'redux';
-
-import conversationState from './conversations';
-import messagesState from './messages';
-
-export default combineReducers({
-  conversationState,
-  messagesState
-});
+import MessagesReducer from "./messages";
+import ConversationsReducer from "./conversations";
+import UserReducer from "./UserReducer";
+import UsersReducer from "./UsersReducer";
+export default {
+    User: UserReducer,
+    Messages: MessagesReducer,
+    Conversations: ConversationsReducer,
+    otherUsers: UsersReducer
+}

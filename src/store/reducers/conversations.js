@@ -1,12 +1,19 @@
+import Conversations from '../Constants/Conversations';
+
 const initialState = {
-    conversations: [],
-    selectedConversation: {}
+    conversations: [],  
+    selectedConversation: {},
+    loading:true
 };
 
 initialState.selectedConversation = initialState.conversations[1];
 
 const conversationsReducer = (state = initialState, action) => {
     switch (action.type) {
+        case Conversations.GET_ALL_CONVERSATIONS_OF_CURRENT_USER:
+            case Conversations.CREATE_NEW_CONVERSATION:
+            case Conversations.SET_SELECTED_CATEGORY:
+            return {...state, ...action.payload}
         case 'CONVERSATIONS_LOADED': {
             const newState = { ...state };
             newState.conversations = action.payload.conversations ? action.payload.conversations : [];

@@ -9,8 +9,8 @@ import MessageList from '../message/MessageList';
 import ChatForm from '../../components/chat-form/ChatForm';
 import './ChatShell.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { conversationChanged ,conversationDeleted, getAllConversationsOfCurrentUser, setSelectedCategory} from '../../Store copy/Actions/ConversationActions';
-import { getAllUsers } from '../../Store copy/Actions/UsersActions';
+import { conversationChanged ,conversationDeleted, getAllConversationsOfCurrentUser, setSelectedCategory} from '../../store/Actions/ConversationActions';
+import { getAllUsers } from '../../store/Actions/UsersActions';
 import { auth, firestore } from '../../firebase';
 
 const ChatShell = () => {

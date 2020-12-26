@@ -3,7 +3,6 @@ import Modal from "react-modal";
 import Button from '../controls/buttons/Button';
 import Background from "../../images/pencil.png";
 import ConversationList from '../../components/conversation/conversation-list/ConversationList';
-import { conversationChanged, newMessageAdded, conversationDeleted, conversationsRequested } from '../../store/actions';
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';

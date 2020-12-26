@@ -4,7 +4,7 @@ import './MessageList.scss';
 import Message from '../../components/message/Message';
 import ReactLoading from 'react-loading';
 import { auth, firestore } from '../../firebase';
-import { getMessagesOfCurrentConversation } from '../../Store copy/Actions/MessagesActions';
+import { getMessagesOfCurrentConversation } from '../../store/Actions/MessagesActions';
 
 const MessageList = ({ conversationId, getMessagesForConversation, loadMessages }) => {
     const dispatch = useDispatch();

@@ -8,8 +8,8 @@ import Button from '../../controls/buttons/Button';
 import { auth } from "../../../firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { useToasts } from 'react-toast-notifications';
-import { createNewConversation, getAllConversationsOfCurrentUser } from "../../../Store copy/Actions/ConversationActions";
-import { sendMessage } from "../../../Store copy/Actions/MessagesActions";
+import { createNewConversation, getAllConversationsOfCurrentUser } from "../../../store/Actions/ConversationActions";
+import { sendMessage } from "../../../store/Actions/MessagesActions";
 const NewConversation = () => {
   const dispatch = useDispatch();
   const [modalIsOpen, setModalIsOpen] = useState(false);

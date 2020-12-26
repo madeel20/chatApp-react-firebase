@@ -5,7 +5,7 @@ import ChatShell from './containers/shell/ChatShell';
 import LoginPage from '../src/pages/login.page'
 import SignUp from '../src/pages/signup.page'
 import { auth } from './firebase';
-import {store} from "./Store copy";
+import {store} from "./store";
 import {Provider} from 'react-redux'
 import { ToastProvider } from 'react-toast-notifications'
 function App() {
