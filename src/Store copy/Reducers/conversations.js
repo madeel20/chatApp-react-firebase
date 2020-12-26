@@ -2,7 +2,8 @@ import Conversations from '../Constants/Conversations';
 
 const initialState = {
     conversations: [],  
-    selectedConversation: {}
+    selectedConversation: {},
+    loading:true
 };
 
 initialState.selectedConversation = initialState.conversations[1];

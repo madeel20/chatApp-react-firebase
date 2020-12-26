@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import ConversationSearch from '../../components/conversation/conversation-search/ConversationSearch';
 import NoConversations from '../../components/conversation/no-conversations/NoConversations';
@@ -17,9 +17,17 @@ const ChatShell = () => {
     const stateProps = useSelector(state =>state)
     const {User,Messages,Conversations,otherUsers} = stateProps;
     const {conversations,selectedConversation} = Conversations;
+   const intervalObj = useRef();
     useEffect(() => {
         dispatch(getAllUsers());
         dispatch(getAllConversationsOfCurrentUser());
+        intervalObj.current =  setInterval(()=>{
+            dispatch(getAllUsers());
+            dispatch(getAllConversationsOfCurrentUser());
+        },6000);
+        return ()=>{
+            clearInterval(intervalObj.current)
+        }
     }, []);
     let conversationContent = (
         <>
