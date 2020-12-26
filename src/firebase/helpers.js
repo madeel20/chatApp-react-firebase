@@ -47,7 +47,6 @@ export const updateAFieldInDocment = async (collection,whereField,whereValue,fie
         if(res.docs.length>0){
             let doc = res.docs[0].id;
             return await firestore.collection(collection).doc(doc).update({[field]:fieldValue}).then(r=>{
-                console.log('updated!')
                 return r;
             }).catch(err=>{
                 console.log(err);

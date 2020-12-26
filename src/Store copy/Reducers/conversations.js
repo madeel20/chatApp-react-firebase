@@ -10,6 +10,7 @@ initialState.selectedConversation = initialState.conversations[1];
 const conversationsReducer = (state = initialState, action) => {
     switch (action.type) {
         case Conversations.GET_ALL_CONVERSATIONS_OF_CURRENT_USER:
+            case Conversations.CREATE_NEW_CONVERSATION:
             return {...state, ...action.payload}
         case 'CONVERSATIONS_LOADED': {
             const newState = { ...state };

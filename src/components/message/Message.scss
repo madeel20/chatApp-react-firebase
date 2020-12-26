@@ -49,7 +49,7 @@ $speech-bubble-border-color: darken($accent-color, 13.18);
         justify-items: start;
 
         > .message-content {
-            grid-template-columns: 48px 1fr;
+            // grid-template-columns: 48px 1fr;
             grid-column-gap: 15px;
 
             > .message-text {
