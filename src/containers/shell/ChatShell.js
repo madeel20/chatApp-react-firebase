@@ -9,26 +9,29 @@ import MessageList from '../message/MessageList';
 import ChatForm from '../../components/chat-form/ChatForm';
 import './ChatShell.scss';
 import { useDispatch, useSelector } from 'react-redux';
-import { conversationChanged ,conversationDeleted, getAllConversationsOfCurrentUser} from '../../Store copy/Actions/ConversationActions';
+import { conversationChanged ,conversationDeleted, getAllConversationsOfCurrentUser, setSelectedCategory} from '../../Store copy/Actions/ConversationActions';
 import { getAllUsers } from '../../Store copy/Actions/UsersActions';
+import { auth, firestore } from '../../firebase';
 
 const ChatShell = () => {
     const dispatch = useDispatch();
     const stateProps = useSelector(state =>state)
-    const {User,Messages,Conversations,otherUsers} = stateProps;
+    const {Conversations} = stateProps;
     const {conversations,selectedConversation} = Conversations;
    const intervalObj = useRef();
     useEffect(() => {
-        dispatch(getAllUsers());
-        dispatch(getAllConversationsOfCurrentUser());
-        intervalObj.current =  setInterval(()=>{
-            dispatch(getAllUsers());
-            dispatch(getAllConversationsOfCurrentUser());
-        },6000);
-        return ()=>{
-            clearInterval(intervalObj.current)
-        }
+        firestore.collection(`chats`).where('memberIds','array-contains',auth.currentUser.uid).onSnapshot(function (res) {
+            dispatch(getAllConversationsOfCurrentUser(res.docs));
+        });
+        firestore.collection(`users`).onSnapshot(function (res) {
+            dispatch(getAllUsers(res.docs));
+        });
     }, []);
+    useEffect(() => {
+        if(selectedConversation){
+            dispatch(setSelectedCategory(conversations.find(conv =>conv.id === selectedConversation.id)));
+        }
+    }, [conversations])
     let conversationContent = (
         <>
             <NoConversations></NoConversations>
@@ -38,7 +41,7 @@ const ChatShell = () => {
     if (conversations.length > 0) {
         conversationContent = (
             <>
-                <MessageList conversationId={selectedConversation.id}  />
+                <MessageList conversationId={selectedConversation?.id ||""}  />
             </>
         );
     }

@@ -3,15 +3,18 @@ import { getCollection } from "../../firebase/helpers";
 import { convertToArray } from "../../utils/helpers";
 import Conversations from "../Constants/Conversations";
 
-export const getAllConversationsOfCurrentUser = (CB) => async (dispatch) => {
+export const getAllConversationsOfCurrentUser = (data,CB) => async (dispatch) => {
     // dispatch({type:Conversations.GET_ALL_CONVERSATIONS_OF_CURRENT_USER,payload:{ loading:true }})
-     await getCollection('chats').then(res=>{
-        dispatch({type:Conversations.GET_ALL_CONVERSATIONS_OF_CURRENT_USER,payload:{loading:false, conversations:convertToArray(res),selectedConversation:convertToArray(res)[0]}});
-        CB && CB(); })
-        .catch((error) => {
-            console.log(error);
-            dispatch({ type: Conversations.GET_ALL_CONVERSATIONS_OF_CURRENT_USER, payload:{ loading: false } });
-        });
+    //  await getCollection('chats').then(res=>{
+        dispatch({type:Conversations.GET_ALL_CONVERSATIONS_OF_CURRENT_USER,payload:{loading:false, conversations:convertToArray(data)}});
+        // CB && CB(); })
+        // .catch((error) => {
+            // console.log(error);
+            // dispatch({ type: Conversations.GET_ALL_CONVERSATIONS_OF_CURRENT_USER, payload:{ loading: false } });
+        // });
+};
+export const setSelectedCategory = (conversation,CB) => async (dispatch) => {
+        dispatch({type:Conversations.SET_SELECTED_CATEGORY,payload:{selectedConversation: conversation}});   
 };
 export const createNewConversation = (payload,CB) => async (dispatch) => {
     dispatch({type:Conversations.CREATE_NEW_CONVERSATION,payload:{ loading:true }})

@@ -39,7 +39,7 @@ const NewConversation = () => {
       },(id)=>{
         if(id){
           dispatch(sendMessage(id,{senderId:auth.currentUser.uid,text:currentUser.name+ ' created this group!',timestamp:new Date().toUTCString()},()=>{
-            dispatch(getAllConversationsOfCurrentUser())
+            // dispatch(getAllConversationsOfCurrentUser())
           }))
         }
       }))
@@ -85,7 +85,7 @@ const NewConversation = () => {
               <div
                 id="imagePreview"
                 style={{
-                  backgroundImage: `url(http://i.pravatar.cc/500?img=7)`,
+                  backgroundImage: `url(${require('../../../images/group-icon.png')})`,
                 }}
               ></div>
             </div>

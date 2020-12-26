@@ -15,11 +15,14 @@ const MessageList = ({ conversationId, getMessagesForConversation, loadMessages 
     const { data } = stateProps.Messages;
     let messageItems = null;
     useEffect(() => {
-        setLoading(true)
+        
+        if(conversationId){
+            setLoading(true);
         firestore.collection(`chats/${conversationId}/messages`).orderBy('timestamp', 'desc').onSnapshot(function (res) {
             dispatch(getMessagesOfCurrentConversation(res));
             setLoading(false)
         });
+        }
     }, [conversationId])
 
     if (data && data.length > 0) {

@@ -26,9 +26,9 @@ const ChatForm = ({ selectedConversation, onMessageSubmitted }) => {
     if (selectedConversation) {
         formContents = (
             <>
-                <div title="Add Attachment">
+                {/* <div title="Add Attachment">
                     <AttachmentIcon />
-                </div>
+                </div> */}
                 <input 
                     type="text" 
                     placeholder="type a message" 
