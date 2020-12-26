@@ -62,9 +62,9 @@ const ChatTitle = ({ selectedConversation, onDeleteConversation }) => {
                   
                 </div>
                 <div></div>
-                <div onClick={ () => { onDeleteConversation(); } } title="Delete Conversation">
+                {/* <div onClick={ () => { onDeleteConversation(); } } title="Delete Conversation">
                 <TrashIcon />
-                </div>
+                </div> */}
                
             </>
         );

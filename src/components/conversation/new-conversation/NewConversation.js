@@ -5,16 +5,18 @@ import "./NewConversation.scss";
 import Background from "../../../images/pencil.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Button from '../../controls/buttons/Button';
+import { auth } from "../../../firebase";
 
 const NewConversation = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   return (
     <>
       <div id="new-message-container">
-        <div>
+        <div >
           <h2>new group</h2>
         </div>
-        <button onClick={() => setModalIsOpen(true)}>+</button>
+        <button className="c-button" onClick={() => setModalIsOpen(true)}>+</button>
+        <button className="c-logout" onClick={() => auth.signOut()}>Log Out</button>
       </div>
       <Modal
         isOpen={modalIsOpen}
